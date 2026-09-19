@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Natal, Thay Pandinha! 🐼</title>
+    <style>
+        /* Importando uma fonte que lembra o estilo Pixel/Minecraft */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Fundo verde escuro simulando grama de Minecraft à noite */
+            background-color: #1a2e1a;
+            background-image: 
+                radial-gradient(#2d4c2d 10%, transparent 10%),
+                radial-gradient(#2d4c2d 10%, transparent 10%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            font-family: 'Press Start 2P', cursive;
+            overflow: hidden;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border: 6px solid #ff0000; /* Borda vermelha natalina */
+            box-shadow: 10px 10px 0px #000;
+            max-width: 80%;
+        }
+
+        h1 {
+            font-size: 20px;
+            line-height: 1.6;
+            text-shadow: 4px 4px #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #55ff55; /* Verde clássico do Minecraft */
+            display: block;
+            margin-top: 15px;
+            font-size: 24px;
+        }
+
+        .emoji-pixel {
+            font-size: 40px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* Neve caindo */
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="snow" id="snow"></div>
+
+    <div class="container">
+        <h1>Chegou seu momento, <br>
+            <span class="highlight">THAY PANDINHA...</span>
+        </h1>
+        <div class="emoji-pixel">🐼⛏️🎄</div>
+    </div>
+
+    <script>
+        // Script simples para criar o efeito de neve
+        const snowContainer = document.getElementById('snow');
+        const snowflakeCount = 50;
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.innerHTML = '❄';
+            snowflake.style.position = 'absolute';
+            snowflake.style.color = 'white';
+            snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.top = '-20px';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.transition = `top ${Math.random() * 3 + 2}s linear, left 2s ease-in-out`;
+            
+            snowContainer.appendChild(snowflake);
+
+            // Animação simples de queda
+            setInterval(() => {
+                let top = parseFloat(snowflake.style.top);
+                if (top > window.innerHeight) {
+                    snowflake.style.top = '-20px';
+                } else {
+                    snowflake.style.top = (top + 2) + 'px';
+                }
+            }, 20);
+        }
+    </script>
+</body>
+</html>
