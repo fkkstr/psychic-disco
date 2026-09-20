@@ -1,6 +1,3 @@
-/* FOLKKSTAR - style.css */
-
-/* 1. IMPORTANDO DO GOOGLE FONTS (Deve ser a primeira linha) */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
@@ -16,8 +13,6 @@
   --trans-medium: 0.3s ease;
 }
 
-/* Removido o @font-face local antigo para evitar conflitos */
-
 [data-theme="dark"] {
   --bg-color: #000000;
   --text-color: #ffffff;
@@ -28,8 +23,6 @@
   --header-bg-color: rgba(0, 0, 0);
 }
 
-/* === LÓGICA DE INVERSÃO DA LOGO === */
-/* Se a logo for preta no original, ela fica branca no dark mode */
 [data-theme="light"] .logo-image {
   filter: invert(1);
 }
@@ -37,7 +30,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  /* Aplicando a fonte importada */
   font-family: 'JetBrains Mono', monospace;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -45,13 +37,6 @@ html, body {
   min-height: 100vh;
   overflow-x: hidden;
 }
-
-/* --- ESTILO ESPECÍFICO: DEATHDELUXE VERMELHO ---
- .navigation a[data-path="playlist"] {
-  color: var(--accent-red) !important;
-  font-weight: 700;
-}
-*/
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -76,10 +61,9 @@ a, button, .gallery-card {
 
 body {
   display: flex;
-  /* ALINHAMENTO SUPERIOR ESQUERDO */
   flex-direction: column;
-  justify-content: flex-start; /* Joga tudo para o topo */
-  align-items: flex-start;     /* Joga tudo para a esquerda */
+  justify-content: flex-start;
+  align-items: flex-start;
   text-align: left;
   height: 100vh;
   overflow: hidden;
@@ -89,17 +73,15 @@ body {
 #main-header {
   display: flex;
   flex-direction: column;
-  /* Garante alinhamento à esquerda dentro do header */
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 20px;
   width: 100%;
-  transform: translateY(0); /* Remove centralização vertical antiga */
+  transform: translateY(0);
   background-color: transparent;
   box-shadow: none;
   border-bottom: none;
   z-index: 10;
-  /* Padding para não colar na borda da tela */
-  padding: 30px; 
+  padding: 30px;
   transition: opacity 0.175s ease-out, background-color var(--trans-medium), color var(--trans-medium), border-color var(--trans-medium);
   opacity: 1;
   position: relative;
@@ -110,15 +92,14 @@ body {
   width: 100px;
   height: auto;
   display: block;
-  /* Remove margem automática que centralizava */
-  margin: 0; 
+  margin: 0;
   transition: filter var(--trans-medium);
 }
 
 #main-header .main-navigation-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinha container da nav à esquerda */
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -127,7 +108,7 @@ body {
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: flex-start; /* Alinha itens do menu à esquerda */
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
@@ -139,10 +120,9 @@ body {
   align-items: center;
 }
 
-/* --- ESTILO DA IMAGEM DA HOME --- */
 .home-hero-container {
   width: 100%;
-  max-width: 600px; /* Ajuste o tamanho conforme preferir */
+  max-width: 600px;
   margin-top: 20px;
   animation: fadeIn 0.8s ease-in-out;
 }
@@ -156,7 +136,7 @@ body {
 }
 
 .navigation li a, .dropbtn {
-  font-size: 0.95rem; /* Leve ajuste para JetBrains Mono */
+  font-size: 0.95rem;
   text-decoration: none;
   white-space: nowrap;
   padding: 5px 8px;
@@ -191,7 +171,6 @@ body {
   display: inline-block;
 }
 
-/* Sistema de overlay */
 .press-effect {
   background-color: var(--focus-bg-color) !important;
   transform: scale(0.96);
@@ -250,7 +229,6 @@ body {
   box-shadow: 0 0 0 2px var(--text-color);
 }
 
-/* Dropdown alinhado à esquerda do item */
 .dropdown-content {
   position: absolute;
   background-color: var(--bg-color);
@@ -258,7 +236,7 @@ body {
   width: max-content;
   max-width: 250px;
   z-index: 1002;
-  left: 0; /* Alinha à esquerda do pai */
+  left: 0;
   top: 100%;
   transform: translateY(-10px);
   border: 1px solid var(--border-color);
@@ -333,7 +311,7 @@ body {
 
 #main-content {
   display: flex;
-  padding: 30px; /* Padding igual ao header */
+  padding: 30px;
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -353,7 +331,6 @@ body.collection-active {
   display: block;
 }
 
-/* HEADER FIXO - Alinhado à esquerda */
 body.collection-active #main-header {
   position: fixed;
   top: 0;
@@ -432,7 +409,7 @@ body.collection-active #theme-toggle-button {
   margin-top: 0;
   position: absolute;
   top: 20px;
-  right: 30px; /* Toggle fica na direita para não sobrepor menu */
+  right: 30px;
   transform: translateY(0);
   z-index: 1002;
 }
@@ -589,7 +566,6 @@ body.collection-active #theme-toggle-button {
   pointer-events: none;
 }
 
-/* DESKTOP */
 @media (min-width: 769px) {
   body.collection-active #main-header {
     left: 0;
@@ -612,7 +588,7 @@ body.collection-active #theme-toggle-button {
     overflow: visible;
     border: none;
     background-color: transparent;
-    justify-content: flex-start; /* Imagem expandida alinhada a esquerda */
+    justify-content: flex-start;
   }
 
   .gallery-card.expanded .gallery-item img {
@@ -627,7 +603,6 @@ body.collection-active #theme-toggle-button {
   }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
   #main-header {
     flex-direction: column;
@@ -636,7 +611,7 @@ body.collection-active #theme-toggle-button {
     transform: translateY(0);
     max-width: none;
     width: 100%;
-    align-items: flex-start; /* Força esquerda no mobile */
+    align-items: flex-start;
   }
 
   #main-header .logo-image {
@@ -798,7 +773,6 @@ body.collection-active #theme-toggle-button {
   background-color: var(--focus-bg-color) !important;
 }
 
-/* === LINKS === */
 a {
   color: var(--text-color);
   text-decoration: underline;
@@ -818,7 +792,6 @@ a {
   border: 1px solid var(--border-color);
 }
 
-/* === BLOG === */
 .blog-post {
   width: 100%;
   max-width: 800px;
@@ -880,7 +853,6 @@ a {
   }
 }
 
-/* === VÍDEOS === */
 .video-wrapper {
   position: relative;
   padding-bottom: 56.25%;
@@ -947,177 +919,138 @@ a {
   transition: transform 0.18s ease, background-color 0.18s ease;
 }
 
-/* --- Playlist --- */
 .page-title {
   text-align: left;
   font-size: 2rem;
   padding-top: 1rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
 }
 
 .playlist-info {
-  text-align: left
+  text-align: left;
 }
 
 .playlist-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
-  margin: 0 0 30px 0;
+  max-width: 700px;
+  margin: 0 0 40px 0;
   padding: 0;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+}
+
+.playlist-cover-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.playlist-cover {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.playlist-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--border-color);
 }
 
 .track {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  gap: 15px;
+  padding: 14px 20px;
   background-color: transparent;
-  transition: background-color var(--trans-fast);
+  transition: background-color var(--trans-fast), transform var(--trans-fast);
   position: relative;
 }
 
 .track + .track {
   border-top: 1px solid var(--border-color);
 }
+
+.track:hover {
+  background-color: var(--focus-bg-color);
+}
   
 .track-info {
   flex-grow: 1;
   text-align: left;
+  overflow: hidden;
 }
 
 .track-title {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .track-meta {
   font-size: 0.8rem;
   color: var(--dropdown-item-year-color);
-  margin: 2px 0 0;
+  margin: 4px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .track-actions {
   position: relative;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .play-button {
-  background: none;
-  border: none;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
   color: var(--text-color);
   cursor: pointer;
   padding: 8px;
-  border-radius: 0;
-  width: auto;
-  height: auto;
+  border-radius: 3px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--trans-fast);
+  transition: all var(--trans-fast);
   margin-left: 10px;
 }
 
-.play-button:hover,
-.play-button:focus-visible {
-  background-color: transparent;
+.play-button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  transform: translateY(-1px);
 }
 
-.dropdown-arrow {
-  width: 12px;
-  height: 12px;
-  transition: transform var(--trans-fast);
-}
-
-.play-button.dropdown-open .dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-.dropdown-content-player {
-  position: absolute;
-  background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
-  min-width: 150px;
-  right: 0;
-  top: calc(100% + 12px);
-  z-index: 1003;
-  padding: 2px 0;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-10px);
-  transition: opacity var(--trans-fast), transform var(--trans-fast);
-}
-
-.dropdown-content-player.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.dropdown-content-player a {
-  display: block;
-  padding: 6px 10px;
-  text-decoration: none;
-  color: var(--text-color);
-  font-size: 0.85rem;
-  transition: background-color var(--trans-fast);
-  text-align: left;
-}
-
-.dropdown-content-player a:hover {
-  background-color: var(--dropdown-item-hover-bg);
-}
-
-@media (max-width: 768px) {
-  .playlist-container {
-    padding: 0px 0px;
-  }
-
-  .track {
-    padding: 10px 0;
-  }
-
-  .track-title {
-    font-size: 1rem;
-  }
-
-  .track-meta {
-    font-size: 0.75rem;
-  }
-}
-
-.playlist-cover {
-  max-width: 300px;
-  margin: 10px 0 0 0;
-  padding: 0;
-}
-
-.playlist-cover img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border: 1px solid var(--border-color);
-}
-
-.playlist-link {
-  text-align: left;
-  margin: 5px 0 20px;
-}
-
-.track {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 0px;
+.play-button svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .track-cover {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
-  background: var(--placeholder-color, #ccc);
+  background: var(--focus-bg-color);
+  border: 1px solid var(--border-color);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1128,17 +1061,33 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.play-button:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
+@media (max-width: 768px) {
+  .playlist-container {
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+  }
 
-.play-button svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
+  .playlist-cover-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .track {
+    padding: 12px 15px;
+  }
+
+  .track-title {
+    font-size: 0.9rem;
+  }
+
+  .track-meta {
+    font-size: 0.75rem;
+  }
 }
 
 .dropdown-separator {
@@ -1156,9 +1105,8 @@ a {
   opacity: 1;
 }
 
-/* === BOTÃO COMPRAR (galeria) === */
 .gallery-buy-btn {
-  display: none; /* oculto por padrão, aparece só no card expandido */
+  display: none;
   margin-top: 10px;
   padding: 7px 12px;
   font-family: 'JetBrains Mono', monospace;
