@@ -1,11 +1,6 @@
-/* =========================================================================
-   VARIABLES
-   ========================================================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  /* Colors */
   --bg-color: #ffffff;
   --text-color: #000000;
   --border-color: #000000;
@@ -14,30 +9,20 @@
   --dropdown-item-hover-bg: #f0f0f0;
   --accent-red: #ff0000;
   --header-bg-color: rgba(255, 255, 255);
-
-  /* Transitions */
   --trans-fast: 0.15s ease;
   --trans-medium: 0.3s ease;
   --trans-press: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Shadows */
   --shadow-dropdown: 0 4px 8px rgba(0, 0, 0, 0.1);
   --shadow-press: 0 2px 8px rgba(0, 0, 0, 0.15);
   --focus-ring: 0 0 0 2px var(--text-color);
-
-  /* Spacing scale */
   --space-3xs: 4px;
   --space-2xs: 6px;
   --space-xs: 8px;
   --space-sm: 10px;
   --space-md: 16px;
   --space-lg: 20px;
-
-  /* Fluid spacing (replaces old fixed-value mobile/desktop pairs) */
-  --space-page: clamp(20px, 4vw, 30px);     /* header / main-content side padding */
+  --space-page: clamp(20px, 4vw, 30px);
   --space-section-y: clamp(30px, 6vw, 50px);
-
-  /* Layout */
   --bp-tablet: 768px;
 }
 
@@ -54,10 +39,6 @@
 [data-theme="light"] .logo-image {
   filter: invert(1);
 }
-
-/* =========================================================================
-   RESET / BASE
-   ========================================================================= */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -97,7 +78,6 @@ a {
   white-space: nowrap;
 }
 
-/* Touch-device overrides: disable hover/focus artefacts left behind by tap events */
 .touch-device *:focus,
 .touch-device .navigation li a:focus,
 .touch-device .dropbtn:focus {
@@ -121,11 +101,6 @@ a {
   background-color: var(--focus-bg-color) !important;
 }
 
-/* =========================================================================
-   GLOBAL LAYOUT
-   ========================================================================= */
-
-/* Home state: full-viewport, non-scrolling hero layout */
 body {
   display: flex;
   flex-direction: column;
@@ -137,7 +112,6 @@ body {
   padding-top: 0;
 }
 
-/* Collection state: normal scrollable document flow with a fixed header */
 body.collection-active {
   padding-top: 140px;
   height: auto;
@@ -159,10 +133,6 @@ body.collection-active {
   pointer-events: none;
   transition: opacity 0.175s ease-in;
 }
-
-/* =========================================================================
-   HEADER / NAVIGATION
-   ========================================================================= */
 
 #main-header {
   display: flex;
@@ -251,7 +221,6 @@ body.collection-active {
   transform: rotate(180deg);
 }
 
-/* Tap/press feedback (mobile-first: touch state is the default) */
 .navigation li a:hover,
 .dropbtn:hover {
   background-color: transparent;
@@ -276,7 +245,6 @@ body.collection-active {
   box-shadow: var(--focus-ring);
 }
 
-/* Hover states only make sense with a real pointer */
 @media (min-width: 768px) {
   .navigation li a:hover,
   .dropbtn:hover {
@@ -393,8 +361,6 @@ body.collection-active {
   }
 }
 
-/* --- Collection state header: fixed, compact, horizontal nav --- */
-
 body.collection-active #main-header {
   position: fixed;
   top: 0;
@@ -502,10 +468,6 @@ body.collection-active #theme-toggle-button {
   }
 }
 
-/* =========================================================================
-   HERO (home screen)
-   ========================================================================= */
-
 .home-hero-container {
   width: 100%;
   max-width: 600px;
@@ -521,11 +483,6 @@ body.collection-active #theme-toggle-button {
   transition: filter var(--trans-medium);
 }
 
-/* =========================================================================
-   COMPONENTS
-   ========================================================================= */
-
-/* Shared press/tap animation used across interactive controls */
 .navigation li a,
 .dropbtn,
 #theme-toggle-button,
@@ -589,12 +546,6 @@ body.collection-active #theme-toggle-button {
   display: inline-block;
 }
 
-/* =========================================================================
-   SECTIONS
-   ========================================================================= */
-
-/* --- Collection intro text --- */
-
 .collection-description {
   max-width: 800px;
   margin: var(--space-lg) auto var(--space-2xl) 0;
@@ -604,8 +555,6 @@ body.collection-active #theme-toggle-button {
   text-align: left;
   color: var(--dropdown-item-year-color);
 }
-
-/* --- Gallery grid --- */
 
 .gallery-grid {
   display: grid;
@@ -782,7 +731,10 @@ body.collection-active #theme-toggle-button {
   }
 }
 
-/* --- Generic page content --- */
+.page-content {
+  width: 100%;
+  min-width: 0;
+}
 
 .page-content .image-container {
   max-width: 600px;
@@ -815,8 +767,6 @@ body.collection-active #theme-toggle-button {
   height: 100%;
   border: none;
 }
-
-/* --- Blog / editorial content --- */
 
 .blog-post {
   width: 100%;
@@ -880,8 +830,6 @@ body.collection-active #theme-toggle-button {
     overflow-x: hidden;
   }
 }
-
-/* --- Playlist / tracklist --- */
 
 .playlist-info {
   max-width: 100%;
@@ -1119,10 +1067,6 @@ body.collection-active #theme-toggle-button {
     border-color: transparent;
   }
 }
-
-/* =========================================================================
-   RESPONSIVE ADJUSTMENTS (structural, page-wide)
-   ========================================================================= */
 
 @media (max-width: 767px) {
   #main-header {
