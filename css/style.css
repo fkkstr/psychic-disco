@@ -184,38 +184,38 @@ body {
 }
 
 @media (min-width: 769px) {
-  .navigation li a:hover, 
+  .navigation li a:hover,
   .dropbtn:hover {
     background-color: var(--focus-bg-color);
     transition: background-color var(--trans-fast);
   }
-  
+
   .dropbtn.dropdown-open {
     background-color: transparent !important;
   }
-  
+
   .dropbtn.dropdown-open:hover {
     background-color: var(--focus-bg-color) !important;
   }
 }
 
 @media (max-width: 768px) {
-  .navigation li a:hover, 
+  .navigation li a:hover,
   .dropbtn:hover {
     background-color: transparent;
   }
-  
+
   .dropbtn.dropdown-open {
     background-color: var(--focus-bg-color) !important;
   }
-  
-  .navigation li a, 
+
+  .navigation li a,
   .dropbtn,
   #theme-toggle-button {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     will-change: transform, background-color;
   }
-  
+
   .press-effect {
     transform: scale(0.95);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -922,132 +922,87 @@ a {
 .page-title {
   text-align: left;
   font-size: 2rem;
+  font-weight: 700;
   padding-top: 1rem;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 4px;
 }
 
 .playlist-info {
   text-align: left;
+  color: var(--dropdown-item-year-color);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.playlist-cover {
+  max-width: 300px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+.playlist-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--border-color);
+}
+
+.playlist-link {
+  text-align: left;
+  margin: 5px 0 25px;
+  font-size: 0.85rem;
 }
 
 .playlist-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 700px;
-  margin: 0 0 40px 0;
+  max-width: 600px;
+  margin: 10px 0 30px 0;
   padding: 0;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-color);
-}
-
-.playlist-cover-container {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.playlist-cover {
-  width: 120px;
-  height: 120px;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.playlist-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border: 1px solid var(--border-color);
+  counter-reset: track-counter;
 }
 
 .track {
+  counter-increment: track-counter;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 14px 20px;
+  gap: 14px;
+  padding: 12px 10px;
+  margin: 0 -10px;
   background-color: transparent;
-  transition: background-color var(--trans-fast), transform var(--trans-fast);
+  border-radius: 3px;
+  transition: background-color var(--trans-fast);
   position: relative;
+}
+
+.track::before {
+  content: counter(track-counter, decimal-leading-zero);
+  flex-shrink: 0;
+  width: 22px;
+  font-size: 0.75rem;
+  color: var(--dropdown-item-year-color);
+  text-align: left;
+  transition: color var(--trans-fast);
 }
 
 .track + .track {
   border-top: 1px solid var(--border-color);
 }
 
-.track:hover {
-  background-color: var(--focus-bg-color);
-}
-  
-.track-info {
-  flex-grow: 1;
-  text-align: left;
-  overflow: hidden;
-}
+@media (min-width: 769px) {
+  .track:hover {
+    background-color: var(--focus-bg-color);
+  }
 
-.track-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-meta {
-  font-size: 0.8rem;
-  color: var(--dropdown-item-year-color);
-  margin: 4px 0 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-actions {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.play-button {
-  background: var(--bg-color);
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 3px;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--trans-fast);
-  margin-left: 10px;
-}
-
-.play-button:hover {
-  background-color: var(--text-color);
-  color: var(--bg-color);
-  transform: translateY(-1px);
-}
-
-.play-button svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
+  .track:hover::before {
+    color: var(--text-color);
+  }
 }
 
 .track-cover {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
   background: var(--focus-bg-color);
   border: 1px solid var(--border-color);
@@ -1064,64 +1019,165 @@ a {
   display: block;
 }
 
+.track-info {
+  flex-grow: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.track-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-meta {
+  font-size: 0.8rem;
+  color: var(--dropdown-item-year-color);
+  margin: 2px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-actions {
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.play-button {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 3px;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--trans-fast), border-color var(--trans-fast);
+  margin-left: 10px;
+}
+
+.play-button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media (min-width: 769px) {
+  .play-button:hover {
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+  }
+}
+
+.play-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--text-color);
+}
+
+.play-button.dropdown-open,
+.play-button.dropdown-open:hover {
+  background-color: var(--bg-color);
+  border-color: var(--border-color);
+}
+
+.play-button.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content-player {
+  position: absolute;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  min-width: 150px;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 1003;
+  padding: 2px 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity var(--trans-fast), transform var(--trans-fast);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content-player.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown-content-player a {
+  display: block;
+  padding: 6px 10px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  transition: background-color var(--trans-fast);
+  text-align: left;
+}
+
+.dropdown-content-player a:hover {
+  background-color: var(--dropdown-item-hover-bg);
+}
+
+.dropdown-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 3px 0;
+}
+
+[data-theme="dark"] .dropdown-separator {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 @media (max-width: 768px) {
   .playlist-container {
-    max-width: 100%;
-    border: 1px solid var(--border-color);
-    margin-bottom: 30px;
-  }
-
-  .playlist-cover-container {
-    flex-direction: row;
-    align-items: center;
-    padding: 16px;
-    gap: 15px;
-  }
-
-  .playlist-cover {
-    width: 90px;
-    height: 90px;
+    margin: 10px 0 30px 0;
   }
 
   .track {
-    padding: 12px 16px;
-    gap: 10px;
+    padding: 10px 4px;
+    margin: 0 -4px;
+    gap: 12px;
+  }
+
+  .track::before {
+    width: 18px;
+    font-size: 0.7rem;
   }
 
   .track-cover {
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
   }
 
   .track-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .track-meta {
     font-size: 0.75rem;
   }
 
-  .play-button {
-    width: 32px;
-    height: 32px;
-    padding: 6px;
-    margin-left: 8px;
-  }
-
-  .play-button svg {
-    width: 14px;
-    height: 14px;
+  .play-button.dropdown-open {
+    background-color: var(--focus-bg-color);
+    border-color: transparent;
   }
 }
 
-.dropdown-separator {
-  border: none;
-  border-top: 1px solid rgba(0,0,0,0.2);
-  margin: 3px 0;
-}
-
-[data-theme="dark"] .dropdown-separator {
-  border-top: 1px solid rgba(255,255,255,0.2);
+.touch-device .track:active {
+  background-color: var(--focus-bg-color) !important;
 }
 
 .extra-page .item-name,
